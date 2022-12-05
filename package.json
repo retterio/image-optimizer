@@ -1,0 +1,18 @@
+{
+  "name": "retter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b .",
+    "deploy": "export RIO_CLI_URL=api.a101prod.retter.io && rio d --project-id 6kd56ge21",
+    "i": "for d in classes/*/ ; do (cd \"$d\" && echo \"installing dependencies for $d\" && npm i); done"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "14.17.2",
+    "zod-to-json-schema": "3.11.3"
+  }
+}

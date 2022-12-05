@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "imageId": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "imageId"
+    ],
+    "additionalProperties": false
+}

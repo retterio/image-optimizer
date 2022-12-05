@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "scripts": {
+    "export-models": "ts-node scripts/export-models.ts"
+  },
+  "dependencies": {
+    "@retter/rdk": "1.1.15",
+    "@types/node": "^17.0.45",
+    "sharp": "0.30.6",
+    "uuid": "^9.0.0",
+    "zod": "3.19.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.178",
+    "@types/sharp": "^0.29.5",
+    "ts-node": "10.4.0"
+  }
+}

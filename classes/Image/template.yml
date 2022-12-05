@@ -1,0 +1,17 @@
+init: index.init
+getState: index.getState
+getInstanceId: index.getInstanceId
+methods:
+  - method: get
+    type: STATIC
+    handler: image.get
+
+  - method: upload
+    type: STATIC
+    inputModel: UploadInput
+    handler: image.upload
+
+  - method: remove
+    type: STATIC
+    inputModel: RemoveInput
+    handler: image.remove
