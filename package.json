@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -b .",
-    "deploy": "export RIO_CLI_URL=api.a101prod.retter.io && rio d --project-id 6kd56ge21",
+    "deploy": "rio d --project-id 7ef782npg",
     "i": "for d in classes/*/ ; do (cd \"$d\" && echo \"installing dependencies for $d\" && npm i); done"
   },
   "keywords": [],

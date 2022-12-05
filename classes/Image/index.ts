@@ -10,10 +10,6 @@ export async function init(data: Data): Promise<Data> {
     return data
 }
 
-export async function getState(data: Data): Promise<Response> {
-    return { statusCode: 200, body: {} };
-}
-
 export async function getInstanceId(): Promise<string> {
     return "default"
 }

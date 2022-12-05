@@ -15,7 +15,9 @@ const qualities: Record<string, number> = {
     low: 15,
 }
 
-const getResizedImage = async ({ height, width, quality, content, fit }: ResizedImageParameters): Promise<Buffer> => {
+const getResizedImage = async ({ 
+        height, width, quality, content, fit 
+    } : ResizedImageParameters): Promise<Buffer> => {
     const image = await sharp(content)
         .resize(width, height, {
             fit,
@@ -61,16 +63,16 @@ export async function get(data: Data): Promise<StepResponse> {
     try {
         let cacheDuration = 31_536_000 // 1 year
 
-        const p = data.context.pathParameters.path
+        const path = data.context.pathParameters.path
 
-        if (!p) {
+        if (!path) {
             throw new Error('Path does not exist')
         }
 
-        const path = parsePath(p)
+        const newPath = parsePath(path)
 
         let file = await rdk.getFile({
-            filename: imagePrefix + path.imageId,
+            filename: imagePrefix + newPath.imageId,
         })
 
         if (!file?.success) {
@@ -88,11 +90,11 @@ export async function get(data: Data): Promise<StepResponse> {
 
         const parameters: ResizedImageParameters = resizedImageParameters.parse({
             content: image,
-            id: path.imageId,
-            width: path.width,
-            height: path.height,
-            quality: path.quality,
-            fit: path.fit,
+            id: newPath.imageId,
+            width: newPath.width,
+            height: newPath.height,
+            quality: newPath.quality,
+            fit: newPath.fit,
         })
 
         const resizedImage = await getResizedImage(parameters)
@@ -102,8 +104,7 @@ export async function get(data: Data): Promise<StepResponse> {
             body: resizedImage.toString("base64"),
             isBase64Encoded: true,
             headers: {
-                "Content-Type": "image/jpg",
-                'Cache-Control': `max-age=${cacheDuration}`
+                "Content-Type": "image/jpg"
             }
         }
     } catch (error) {

@@ -1,5 +1,4 @@
 init: index.init
-getState: index.getState
 getInstanceId: index.getInstanceId
 methods:
   - method: get
