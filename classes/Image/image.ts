@@ -171,7 +171,7 @@ export async function upload(data: Data): Promise<StepResponse> {
             body: {
                 message: 'Image has been uploaded',
                 id: imageId,
-                url: `https://api.a101prod.retter.io/${projectId}/CALL/Image/get/${imageId}_1024x1024_default_inside.png`
+                url: `https://${projectId}.api.retter.io/${projectId}/CALL/Image/get/${imageId}_1024x1024_default_inside.png`
             },
         }
     } catch (error) {
