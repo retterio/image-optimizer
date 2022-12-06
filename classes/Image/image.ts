@@ -1,7 +1,7 @@
 import RDK, { Data, OperationResponse, StepResponse } from '@retter/rdk'
 import sharp from 'sharp'
 import { ResizedImageParameters, resizedImageParameters, RemoveImageInput, UploadInput, ParsedPath } from './types'
-import { v4 as uuidv4 } from 'uuid';
+import { customAlphabet } from 'nanoid'
 
 const rdk = new RDK()
 
@@ -150,7 +150,8 @@ export async function upload(data: Data): Promise<StepResponse> {
         const { content } = data.request.body as UploadInput
         const projectId = data.context.projectId
 
-        const imageId = uuidv4();
+        const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-', 10)
+        const imageId = nanoid()
       
         if (Buffer.from(content, 'base64').toString('base64') !== content) {
             throw new Error('Content is not base-64 format')
